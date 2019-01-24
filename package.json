@@ -1,0 +1,10 @@
+{
+    "author": "Achiel Volckaert",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.16.4",
+        "iota.lib.js": "^0.5.1",
+        "socket.io": "^2.2.0",
+        "mcp-spi-adc": "2.0.4"
+    }
+}
