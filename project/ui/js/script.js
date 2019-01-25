@@ -19,12 +19,18 @@ let myAnimation = anime({
     loop: false,
 })
 
-let socket = io('http://192.168.0.176:4444');
-socket.on('connect', function(){console.log("connected")});
-socket.on('message', function(message) {
+let socket = io('http://192.168.0.156:4444');
+socket.on('connect', function(){
+    console.log("connected")
+});
+socket.on('histmessage', function(message) {
     console.table(message);
+    reset()
+    document.getElementsByClassName("c-main-section__data")[0].style.display="block"
+    document.getElementsByClassName("c-content")[0].innerHTML = JSON.stringify((message.value))
 });
 socket.on('changeState', function(message) {
+    console.log(message.state)
     switch(message.state){
         case 'Transfer done':
             transferDone()
@@ -37,20 +43,20 @@ socket.on('changeState', function(message) {
             break;
     }
 });
-socket.on("history", function(message) {
-    reset()
-    document.getElementsByClassName("c-main-section__data")[0].style.display="block"
-    document.getElementsByClassName("lds-c-main-section__data")[0].style.display="block"
-    document.getElementsByClassName("c-content")[0].innerHTML = message.value
-
-})
+// socket.on("history", function(message) {
+//     reset()
+//     document.getElementsByClassName("c-main-section__data")[0].style.display="block"
+//     document.getElementsByClassName("lds-c-main-section__data")[0].style.display="block"
+//     document.getElementsByClassName("c-content")[0].innerHTML = message.value
+//
+// })
 socket.on('seedLoaded', function(message) {
     console.log(message)
     if(message.value ==="valid"){
         reset();
         document.getElementsByClassName("c-main-section__battery")[0].style.display = "flex";
-        document.getElementsByClassName("bar")[0].style.display="block"
-        document.getElementById("state").innerHTML = "{ state: 'Phone Charging' }"
+        document.getElementsByClassName("lds-ellipsis")[0].style.display="inline-block"
+        document.getElementById("state").innerHTML = "{ state: 'Plugin phone' }"
     };
 });
 function history(){

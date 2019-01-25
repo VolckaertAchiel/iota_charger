@@ -5,6 +5,8 @@ const length = 243;
 const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ9';
 let seed = "";
 
+console.log("trying to generate an address, please wait...")
+
 for (let i = 0; i < length; i++) {
     seed += charset.charAt(Math.floor(Math.random() * charset.length));
 }

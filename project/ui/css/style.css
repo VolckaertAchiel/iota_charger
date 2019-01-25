@@ -159,6 +159,7 @@ html, body{
     font-weight: 300;
     overflow-y: auto;
     padding-right: 20px;
+    max-width: 1100px;
 }
 .c-footer{
     text-align: center;
