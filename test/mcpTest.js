@@ -3,7 +3,7 @@ let baseline;
 
 const tempSensor = mcpadc.open(0, {speedHz: 1350000}, (err) => {
     if (err) throw err;
-    tempSensor.read((err, reading) => {
+    tempSensor0.read((err, reading) => {
         if (err) throw err;
         let average = 100;
         let span = 0.066
@@ -35,7 +35,7 @@ const tempSensor = mcpadc.open(0, {speedHz: 1350000}, (err) => {
             amps *= 1000;
             amps -= offset;
             amps *= span;
-            console.log("amps: " +Math.round((amps/2)*100) / 100+" reading: " + reading.value+"watt: " +(Math.round((amps/2)*100) / 100)*5);
+            console.log("amps: " +Math.round((amps/2)*100) / 100+" reading: " + reading.value+" watt: " +(Math.round((amps/2)*100) / 100)*5);
         });
     }, 1000);
 });

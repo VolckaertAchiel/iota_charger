@@ -9,9 +9,9 @@ const elecPrice = 0.32;
 const secondelecPrice = elecPrice/3600
 http.listen(4444);
 let baseline;
-const tempSensor = mcpadc.open(0, {speedHz: 1350000}, (err) => {
+const tempSensor0 = mcpadc.open(0, {speedHz: 1350000}, (err) => {
     if (err) throw err;
-    tempSensor.read((err, reading) => {
+    tempSensor0.read((err, reading) => {
         if (err) throw err;
         let average = 100;
         let span = 0.066

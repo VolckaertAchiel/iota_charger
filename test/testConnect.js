@@ -1,5 +1,5 @@
 const IOTA = require('iota.lib.js')
-const iota = new IOTA({ provider: 'https://trinity.iota-tangle.io:14265' })
+const iota = new IOTA({ provider: 'https://altnodes.devnet.iota.org' })
 
 
 console.log("trying to connect, please wait...")

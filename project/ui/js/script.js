@@ -4,6 +4,7 @@ if(window.localStorage.getItem('seed')){
 }
 document.getElementById("connect").addEventListener("click",seedCharger);
 document.getElementById("history").addEventListener("click",history);
+document.getElementById("back").addEventListener("click",back);
 
 
 let obj = {
@@ -19,7 +20,7 @@ let myAnimation = anime({
     loop: false,
 })
 
-let socket = io('http://192.168.0.156:4444');
+let socket = io('http://192.168.43.243:4444');
 socket.on('connect', function(){
     console.log("connected")
 });
@@ -27,7 +28,7 @@ socket.on('histmessage', function(message) {
     console.table(message);
     reset()
     document.getElementsByClassName("c-main-section__data")[0].style.display="block"
-    document.getElementsByClassName("c-content")[0].innerHTML = JSON.stringify((message.value))
+    document.getElementsByClassName("c-content")[0].innerHTML = (message.value)
 });
 socket.on('changeState', function(message) {
     console.log(message.state)
@@ -43,13 +44,6 @@ socket.on('changeState', function(message) {
             break;
     }
 });
-// socket.on("history", function(message) {
-//     reset()
-//     document.getElementsByClassName("c-main-section__data")[0].style.display="block"
-//     document.getElementsByClassName("lds-c-main-section__data")[0].style.display="block"
-//     document.getElementsByClassName("c-content")[0].innerHTML = message.value
-//
-// })
 socket.on('seedLoaded', function(message) {
     console.log(message)
     if(message.value ==="valid"){
